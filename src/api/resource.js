@@ -7,7 +7,9 @@ axios.defaults.headers.post['authToken'] = localStorage.token
 // 响应拦截器
 axios.interceptors.response.use((response) => {
   // 拦截未登录状态
-  return response
+  if (response.status === 200) {
+    return response.data;
+  }
 }, (error) => {
   console.log('请求超时', error)
 })
