@@ -1,0 +1,17 @@
+.search {
+    height: 1.875rem;
+    margin: 0 1rem;
+    overflow: hidden;
+    border-radius: 1.875rem;
+    background-color: #fff;
+    background: #fff url(../../assets/images/icon_search@2x.png) no-repeat 0.625rem center/1.25rem;
+    padding-left: 2.2rem;
+    display: flex;
+    input {
+        border: 0;
+        &::-webkit-input-placeholder {
+            font-weight: 300;
+        }
+        
+    }
+}
