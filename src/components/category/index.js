@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import Api from '../../api/resource';
+import classnames from 'classnames'
 // style
 import './index.scss';
 
 const Item = (props) => {
-    console.log('props', props);
+    let itemClass = classnames('mode-item', {'video': props.type=='1_58_0'});
     return (
-        <li className="mode-item">
+        <li className={itemClass}>
             <div className="mode-list-box">
                 <div className="mode-list-media">
-                    <img className="mode-list-img" src="https://qpic.y.qq.com/music_cover/xiabfMZAmQ0PYUzgCvOicArIoGLzqL3n6q3fDiawWkhTTVWgGNM52HBNA/300?n=1" />
+                    <img className="mode-list-img" src={props.value.cover} />
                 </div>
-                <h3 className="mode-list-tit">欧美| 流行节奏控</h3>
+                <h3 className="mode-list-tit">{props.value.title}</h3>
             </div>
         </li>
     )
@@ -42,12 +43,12 @@ class CategoryItem extends Component {
             return (
                 <div className="mode" key={index}>
                     <div className="mode-tit">
-                        <h3>达人歌单</h3>
+                        <h3>{listDataChild.title_template}</h3>
                     </div>
                     <div className="mode-box">
                         <ul className="mode-list">
                             {listDataChild.v_niche[0].v_card.map((item, childIndex) => {
-                                return (<Item value={item} key={childIndex}/>)
+                                return (<Item value={item} type={listDataChild.tjreport} key={childIndex}/>)
                             })}
                         </ul>
                     </div>
